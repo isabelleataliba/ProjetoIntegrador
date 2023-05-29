@@ -68,6 +68,23 @@ public class ProdutosDAO {
         } catch (Exception e) {
         }
         return false;
-    }   
+    } 
+    
+    public boolean consultarVendas() {
+        String sql = "SELECT * FROM produtos where status = 'Vendido'";
+        new conectaDAO();
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                    rs.getString("id");
+                    rs.getString("nome");
+                    rs.getInt("valor");
+                    rs.getString("status")
+                ;
+            }
+        } catch (Exception e) {
+        }
+    }
 }
 
