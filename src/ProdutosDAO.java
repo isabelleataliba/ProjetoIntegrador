@@ -38,6 +38,21 @@ public class ProdutosDAO {
             return false;
         }  
     }
+    
+    public boolean venderProduto(ProdutosDTO p) {
+        conn = new conectaDAO().connectDB();
+        String sql = "INSERT INTO produtos(status) VALUE "
+                + "(?)";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, p.getStatus());
+            stmt.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir: " + e.getMessage());
+            return false;
+        }  
+    }
     public ArrayList<ProdutosDTO> listarProdutos(){
         return listagem;
     }   
